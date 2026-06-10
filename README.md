@@ -17,10 +17,11 @@ Aplikasi bookmark manager berbasis React Native untuk menyimpan, mengorganisir, 
 
 | Teknologi | Versi | Fungsi |
 |-----------|-------|--------|
-| React Native | 0.81.5 | Framework mobile |
-| Expo SDK | ~54.0 | Development platform |
-| Expo Router | ~6.0 | File-based navigation |
-| Expo SQLite | ~16.0 | Database lokal |
+| React Native | 0.83.6 | Framework mobile |
+| Expo SDK | ~55.0 | Development platform |
+| Expo Router | ~55.0 | File-based navigation |
+| Expo SQLite | ~55.0 | Database lokal |
+| React | 19.2.0 | UI library |
 | Plus Jakarta Sans | - | Typography |
 
 ## Struktur Proyek
