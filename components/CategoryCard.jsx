@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import colors from '../constants/colors';
 import typography from '../constants/typography';
 
@@ -10,7 +11,7 @@ const CategoryCard = ({ category, onPress, onEdit, onDelete }) => {
     <TouchableOpacity style={styles.card} onPress={() => onPress?.(category)} activeOpacity={0.7}>
       <View style={styles.row}>
         <View style={[styles.folderIcon, { backgroundColor: catColor + '22' }]}>
-          <Text style={[styles.folderEmoji, { color: catColor }]}>📁</Text>
+          <Ionicons name="folder" size={24} color={catColor} />
         </View>
 
         <View style={styles.info}>
@@ -30,7 +31,7 @@ const CategoryCard = ({ category, onPress, onEdit, onDelete }) => {
               onEdit?.(category);
             }}
           >
-            <Text style={styles.iconBtnText}>✏️</Text>
+            <Ionicons name="create-outline" size={16} color={colors.textSecondary} />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconBtn}
@@ -39,7 +40,7 @@ const CategoryCard = ({ category, onPress, onEdit, onDelete }) => {
               onDelete?.(category);
             }}
           >
-            <Text style={styles.iconBtnText}>🗑️</Text>
+            <Ionicons name="trash-outline" size={16} color={colors.textSecondary} />
           </TouchableOpacity>
         </View>
       </View>
@@ -68,9 +69,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 12,
   },
-  folderEmoji: {
-    fontSize: typography.sizes.xl,
-  },
   info: {
     flex: 1,
     justifyContent: 'center',
@@ -98,9 +96,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceVariant,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  iconBtnText: {
-    fontSize: typography.sizes.sm,
   },
 });
 

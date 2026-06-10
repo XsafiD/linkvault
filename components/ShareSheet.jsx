@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Modal, Pressable, Share } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import * as Clipboard from 'expo-clipboard';
 import * as Linking from 'expo-linking';
 import colors from '../constants/colors';
@@ -41,10 +42,10 @@ const ShareSheet = ({ visible, onClose, url, title }) => {
   };
 
   const options = [
-    { label: 'WhatsApp', icon: '💬', onPress: handleWhatsApp },
-    { label: 'Salin Link', icon: '📋', onPress: handleCopy },
-    { label: 'Email', icon: '✉️', onPress: handleEmail },
-    { label: 'Share', icon: '📤', onPress: handleSystemShare },
+    { label: 'WhatsApp', icon: <Ionicons name="logo-whatsapp" size={24} color={colors.textPrimary} />, onPress: handleWhatsApp },
+    { label: 'Salin Link', icon: <Ionicons name="copy-outline" size={24} color={colors.textPrimary} />, onPress: handleCopy },
+    { label: 'Email', icon: <Ionicons name="mail-outline" size={24} color={colors.textPrimary} />, onPress: handleEmail },
+    { label: 'Share', icon: <Ionicons name="share-outline" size={24} color={colors.textPrimary} />, onPress: handleSystemShare },
   ];
 
   return (
@@ -66,7 +67,7 @@ const ShareSheet = ({ visible, onClose, url, title }) => {
                 onPress={opt.onPress}
               >
                 <View style={styles.optionIcon}>
-                  <Text style={styles.optionEmoji}>{opt.icon}</Text>
+                  {opt.icon}
                 </View>
                 <Text style={styles.optionLabel}>{opt.label}</Text>
               </TouchableOpacity>
@@ -124,9 +125,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 8,
-  },
-  optionEmoji: {
-    fontSize: typography.sizes['2xl'],
   },
   optionLabel: {
     fontFamily: typography.font,

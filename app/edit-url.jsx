@@ -14,6 +14,7 @@ import {
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Clipboard from 'expo-clipboard';
+import { Ionicons } from '@expo/vector-icons';
 import colors from '../constants/colors';
 import typography from '../constants/typography';
 import { useBookmarks } from '../hooks/useBookmarks';
@@ -180,7 +181,7 @@ const EditUrl = () => {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={handleCancel} style={styles.headerBtn}>
-          <Text style={styles.backText}>←</Text>
+          <Ionicons name="chevron-back" size={24} color={colors.textSecondary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Edit URL</Text>
         <TouchableOpacity
@@ -188,9 +189,7 @@ const EditUrl = () => {
           style={styles.headerBtn}
           disabled={!isFormValid || saving}
         >
-          <Text style={[styles.checkText, (!isFormValid || saving) && styles.checkDisabled]}>
-            ✓
-          </Text>
+          <Ionicons name="checkmark" size={24} color={(!isFormValid || saving) ? colors.textTertiary : colors.gold} />
         </TouchableOpacity>
       </View>
 
@@ -404,25 +403,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  backText: {
-    fontFamily: typography.font,
-    fontSize: typography.sizes.xl,
-    color: colors.textSecondary,
-  },
   headerTitle: {
     fontFamily: typography.font,
     fontSize: typography.sizes.lg,
     fontWeight: typography.weights.semiBold,
     color: colors.textPrimary,
-  },
-  checkText: {
-    fontFamily: typography.font,
-    fontSize: typography.sizes['2xl'],
-    fontWeight: typography.weights.bold,
-    color: colors.gold,
-  },
-  checkDisabled: {
-    color: colors.textTertiary,
   },
   scrollView: {
     flex: 1,

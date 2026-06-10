@@ -216,7 +216,7 @@ const Categories = () => {
       <ModalDialog
         visible={!!deleteTarget}
         onClose={() => setDeleteTarget(null)}
-        icon="🗑️"
+        icon={<Ionicons name="trash-outline" size={28} color={colors.error} />}
         title="Hapus Kategori?"
         description={`Kategori "${deleteTarget?.name || ''}" akan dihapus. Bookmark dalam kategori ini akan berpindah ke "Uncategorized".`}
         confirmLabel="Hapus Sekarang"

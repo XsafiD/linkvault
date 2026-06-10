@@ -144,7 +144,7 @@ const Dashboard = () => {
       <ModalDialog
         visible={!!deleteTarget}
         onClose={() => setDeleteTarget(null)}
-        icon="🗑️"
+        icon={<Ionicons name="trash-outline" size={28} color={colors.error} />}
         title="Hapus Bookmark?"
         description={`Bookmark "${deleteTarget?.title || ''}" akan dihapus secara permanen.`}
         confirmLabel="Hapus Sekarang"

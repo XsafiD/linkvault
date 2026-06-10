@@ -26,7 +26,7 @@ const ModalDialog = ({
         <Pressable style={styles.card} onPress={(e) => e.stopPropagation()}>
           {icon && (
             <View style={[styles.iconContainer, danger && styles.iconDanger]}>
-              <Text style={styles.iconEmoji}>{icon}</Text>
+              {icon}
             </View>
           )}
 
@@ -82,9 +82,6 @@ const styles = StyleSheet.create({
   },
   iconDanger: {
     backgroundColor: colors.error + '22',
-  },
-  iconEmoji: {
-    fontSize: typography.sizes['3xl'],
   },
   title: {
     fontFamily: typography.font,

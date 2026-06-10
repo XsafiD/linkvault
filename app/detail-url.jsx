@@ -251,7 +251,7 @@ const DetailUrl = () => {
       <ModalDialog
         visible={showDeleteModal}
         onClose={() => setShowDeleteModal(false)}
-        icon="🗑️"
+        icon={<Ionicons name="trash-outline" size={28} color={colors.error} />}
         title="Hapus Bookmark?"
         description={`Bookmark "${bookmark.title}" akan dihapus secara permanen.`}
         confirmLabel="Hapus Sekarang"

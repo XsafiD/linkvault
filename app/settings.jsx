@@ -175,7 +175,7 @@ const Settings = () => {
       <ModalDialog
         visible={showDeleteModal}
         onClose={() => setShowDeleteModal(false)}
-        icon="⚠️"
+        icon={<Ionicons name="alert-circle-outline" size={28} color={colors.error} />}
         title="Hapus Semua?"
         description="Semua data bookmark akan dihapus secara permanen. Kategori tidak akan terpengaruh. Tindakan ini tidak bisa dibatalkan."
         confirmLabel="Ya, Hapus"

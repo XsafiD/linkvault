@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import colors from '../constants/colors';
 import typography from '../constants/typography';
 import { getInitial, truncateText } from '../utils/formatters';
@@ -52,9 +53,11 @@ const BookmarkCard = ({ bookmark, isExpanded, onToggleExpand, onOpen, onEdit, on
         </View>
 
         <TouchableOpacity onPress={handleToggle} style={styles.chevronBtn}>
-          <Text style={[styles.chevron, isExpanded && styles.chevronExpanded]}>
-            ▾
-          </Text>
+          <Ionicons
+            name={isExpanded ? 'chevron-up' : 'chevron-down'}
+            size={20}
+            color={isExpanded ? colors.gold : colors.textTertiary}
+          />
         </TouchableOpacity>
       </View>
 
@@ -137,13 +140,6 @@ const styles = StyleSheet.create({
   },
   chevronBtn: {
     padding: 8,
-  },
-  chevron: {
-    fontSize: typography.sizes.lg,
-    color: colors.textTertiary,
-  },
-  chevronExpanded: {
-    color: colors.gold,
   },
   expandedContent: {
     marginTop: 12,
