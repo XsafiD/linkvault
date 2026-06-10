@@ -7,16 +7,16 @@ import {
   StyleSheet,
   Alert,
   ActivityIndicator,
+  Linking,
 } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
-import * as WebBrowser from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import colors from '../constants/colors';
 import typography from '../constants/typography';
 import { bookmarkRepository } from '../database/bookmarkRepository';
 import { categoryRepository } from '../database/categoryRepository';
-import { getInitial } from '../utils/formatters';
+import { getInitial, ensureScheme } from '../utils/formatters';
 import { formatDate, relativeTime } from '../utils/formatters';
 import ModalDialog from '../components/ModalDialog';
 import ShareSheet from '../components/ShareSheet';
@@ -69,7 +69,7 @@ const DetailUrl = () => {
 
   const handleOpenLink = useCallback(async () => {
     if (!bookmark) return;
-    await WebBrowser.openBrowserAsync(bookmark.url);
+    await Linking.openURL(ensureScheme(bookmark.url));
     await bookmarkRepository.incrementVisit(bookmark.id);
     // Refresh data to show updated visit count & last_visited
     const updated = await bookmarkRepository.getById(bookmark.id);
@@ -100,7 +100,7 @@ const DetailUrl = () => {
 
   const handleUrlPress = useCallback(async () => {
     if (!bookmark) return;
-    await WebBrowser.openBrowserAsync(bookmark.url);
+    await Linking.openURL(ensureScheme(bookmark.url));
   }, [bookmark]);
 
   if (loading) {

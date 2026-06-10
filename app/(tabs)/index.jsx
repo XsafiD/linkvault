@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, RefreshControl } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, RefreshControl, Linking } from 'react-native';
 import { useRouter, useFocusEffect } from 'expo-router';
-import * as WebBrowser from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../../constants/colors';
 import typography from '../../constants/typography';
 import { useBookmarks } from '../../hooks/useBookmarks';
 import { useSearch } from '../../hooks/useSearch';
 import { bookmarkRepository } from '../../database/bookmarkRepository';
+import { ensureScheme } from '../../utils/formatters';
 import SearchBar from '../../components/SearchBar';
 import BookmarkCard from '../../components/BookmarkCard';
 import ModalDialog from '../../components/ModalDialog';
@@ -37,7 +37,7 @@ const Dashboard = () => {
   }, []);
 
   const handleOpen = useCallback(async (bookmark) => {
-    await WebBrowser.openBrowserAsync(bookmark.url);
+    await Linking.openURL(ensureScheme(bookmark.url));
     await bookmarkRepository.incrementVisit(bookmark.id);
   }, []);
 

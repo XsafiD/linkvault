@@ -11,16 +11,16 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  Linking,
 } from 'react-native';
 import { useRouter, useLocalSearchParams, useFocusEffect } from 'expo-router';
-import * as WebBrowser from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../../constants/colors';
 import typography from '../../constants/typography';
 import { categoryRepository } from '../../database/categoryRepository';
 import { bookmarkRepository } from '../../database/bookmarkRepository';
 import { useSearch } from '../../hooks/useSearch';
-import { formatDate, getInitial } from '../../utils/formatters';
+import { formatDate, getInitial, ensureScheme } from '../../utils/formatters';
 import SearchBar from '../../components/SearchBar';
 import BookmarkCard from '../../components/BookmarkCard';
 import ModalDialog from '../../components/ModalDialog';
@@ -78,7 +78,7 @@ const CategoryDetail = () => {
   }, []);
 
   const handleOpen = useCallback(async (bookmark) => {
-    await WebBrowser.openBrowserAsync(bookmark.url);
+    await Linking.openURL(ensureScheme(bookmark.url));
     await bookmarkRepository.incrementVisit(bookmark.id);
   }, []);
 

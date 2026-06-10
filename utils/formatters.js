@@ -61,6 +61,19 @@ export function truncateText(text, maxLength = 50) {
 }
 
 /**
+ * Pastikan URL memiliki scheme (https://).
+ * "google.com" → "https://google.com"
+ * "http://google.com" → "http://google.com" (tidak diubah)
+ */
+export function ensureScheme(url) {
+  if (!url || typeof url !== 'string') return url;
+  const trimmed = url.trim();
+  if (!trimmed) return trimmed;
+  if (/^[\w][\w+.-]*:\/\//.test(trimmed)) return trimmed;
+  return `https://${trimmed}`;
+}
+
+/**
  * Ambil huruf pertama dari teks, uppercase.
  * Untuk emoji atau multi-codepoint, fallback ke karakter pertama.
  */
