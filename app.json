@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mopro.LinkVault"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,6 +31,12 @@
       "expo-web-browser",
       "expo-font",
       "expo-sharing"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "bec2b390-e07a-4846-8bdb-c9da7d49d072"
+      }
+    }
   }
 }
